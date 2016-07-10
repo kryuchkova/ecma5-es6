@@ -1,0 +1,33 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Working with immutable.js</title>
+
+  <script
+   src="https://cdnjs.cloudflare.com/ajax/libs/immutable/3.8.1/immutable.js">
+  </script>
+ </head>
+
+ <body>
+   <script>
+    // https://dzone.com/articles/introduction-to-immutablejs-and-functional-program
+
+    var oddSquares = Immutable.Seq.of(1,2,3,4,5,6,7,8)
+                              .filter(x => x % 2)
+                              .map(x => x * x);
+
+    // performs minimum to get the result
+    console.log("result0 = "+oddSquares.get(0)); // 9
+    console.log("result1 = "+oddSquares.get(1)); // 9
+
+    var list1 = Immutable.List.of(1,2,3);
+    var list2 = list1.withMutations(function (list) {
+        list.push(4).push(5).push(6);
+    });
+
+    console.log("list1 = "+list1);
+    console.log("list2 = "+list2);
+   </script>
+ </body>
+</html>
+

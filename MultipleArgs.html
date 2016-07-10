@@ -1,0 +1,58 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Nested Functions</title>
+ </head>
+
+ <body>
+   <script>
+     function func1(arg1) {
+       console.log("* Inside func1 arg1: "+arg1);
+     } 
+
+     function func2(arg1) {
+       console.log("* Inside func2");
+       return function inner1(arg2) {
+         console.log("* Inside func2/inner1 arg2: "+arg2);
+       } 
+     } 
+
+     function func3(arg1) {
+       console.log("* Inside func3 arg1: "+arg1);
+       return function inner1(arg2) {
+         console.log("* Inside func3/inner1 arg2: "+arg2);
+         return function inner2(arg3) {
+           console.log("* Inside func3/inner2 arg3: "+arg3);
+         } 
+       } 
+     } 
+
+     function func4(arg1) {
+       console.log("* Inside func4 arg1: "+arg1);
+       return function inner1(arg2) {
+         console.log("* Inside func4/inner1 arg2: "+arg2);
+         return function inner2(arg3) {
+           console.log("* Inside func4/inner2 arg3: "+arg3);
+            return function inner3(arg4) {
+              console.log("* Inside func4/inner3 arg4: "+arg4);
+            } 
+         } 
+       } 
+     } 
+
+     function func5(arg1,arg2,arg3,arg4,arg5) {
+       console.log("* Inside func5 arg1: "+arg1);
+       console.log("* Inside func5 arg2: "+arg2);
+       console.log("* Inside func5 arg3: "+arg3);
+       console.log("* Inside func5 arg4: "+arg4);
+     } 
+
+     func1("a");
+     func2("a")("b");
+     func3("a")("b")("c");
+     func4("a")("b")("c")("d");
+     func5("a","b","c","d");
+   </script>
+ </body>
+</html>
+

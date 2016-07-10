@@ -1,0 +1,42 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>NodeJs Question</title>
+ </head>
+
+ <body>
+   <script>
+     //-------------------------------------------------
+     // 1) The every() method checks if all elements in 
+     //    an array pass a test (provided as a function)
+     // 2) The some() method checks if any element in an
+     //    array passes a test (provided as a function)
+     //-------------------------------------------------
+     function checkInnerArray(outerArray) {
+        console.log("outerArray = "+JSON.stringify(outerArray));
+        return function areInnerElementsInOuter(innerArray) {
+           console.log("innerArray = "+JSON.stringify(innerArray));
+           return innerArray.every(function(innerElem, index) { 
+console.log("*** index of innerElem to check = "+index)
+
+              return outerArray.some(function(outerElem) { 
+
+console.log(index+"compare: "+outerElem+" matches? "+innerElem+
+            " result--> "+(outerElem === innerElem)) 
+
+                 return outerElem === innerElem 
+              }) 
+           }) 
+        } 
+     } 
+
+     var outerArray = [1, 2, 3, 4];
+     var innerArray = [1, 4];
+
+     console.log("result: "+checkInnerArray(outerArray)(innerArray));
+     var allValid = innerArray.every(function(elem) { return outerArray.indexOf(elem)>=0; });
+     console.log("result2: "+allValid);
+   </script>
+ </body>
+</html>
+

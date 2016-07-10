@@ -1,0 +1,28 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Working with 'let' and 'for'</title>
+ </head>
+
+ <body>
+   <script>
+     let items  = [1,2,3,4,5,6,7,8];
+
+     let double = items.map((item) => {return 2*item})
+     console.log("double = "+double);
+
+     let even   = items.filter((x) => {return x % 2 == 0})
+     console.log("even   = "+even);
+
+     let upper1 = items.map((x) => {return 'a'+x})
+                       .map((x) => {return x.toUpperCase()})
+     console.log("upper1 = "+upper1);
+
+     let upper2 = items.filter((x) => {return x % 2 == 0})
+                       .map((x) => {return 'z'+x})
+                       .map((x) => {return x.toUpperCase()})
+     console.log("upper2 = "+upper2);
+   </script>
+ </body>
+</html>
+

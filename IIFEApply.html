@@ -1,0 +1,15 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>IIFE and apply</title>
+ </head>
+
+ <body>
+   <script>
+    (function(obj, fn){
+      obj[fn].apply(obj, ['abc', 'def']);
+    })(console, 'log');
+   </script>
+ </body>
+</html>
+

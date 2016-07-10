@@ -1,0 +1,31 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Nested Functions</title>
+ </head>
+
+ <body>
+   <script>
+     function func1(num1) {
+       return function inner1(num2, num3) {
+console.log("func1 num1 = "+num1+" num2 = "+num2+" num3 ="+num3);
+       } 
+     } 
+
+     function func2(n1) {
+       return function inner1(n2, n3, n4) {
+         return function inner2(n5, n6) {
+console.log("func2 n1 = "+n1+" n2 = "+n2+" n3 = "+n3+
+                 " n4 = "+n4+" n5 = "+n5+" n6 = "+n6);
+         } 
+       } 
+     } 
+
+     func1(3)(10,20);
+
+     var a1=1,a2=2,a3=3,a4=4,a5=5,a6=6;
+     func2(a1)(a2,a3,a4)(a5,a6);
+   </script>
+ </body>
+</html>
+

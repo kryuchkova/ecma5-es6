@@ -1,0 +1,22 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Working with Promises</title>
+ </head>
+
+ <body>
+   <script>
+     // define the Promise 'p'
+     var p = new Promise(function(resolve) {
+         var value = 13;
+         resolve(value);
+     });
+  
+     // LEVEL 1: the value 13 is displayed 
+     p.then(function(data) {
+        console.log("1data: "+data);
+     });
+   </script>
+ </body>
+</html>
+

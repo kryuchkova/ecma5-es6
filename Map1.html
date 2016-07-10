@@ -1,0 +1,22 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Using the 'map' Method</title>
+ </head>
+
+ <body>
+  <script>
+    let arr1 = [1,2,3,4,5];
+    let arr2 = arr1.map(x => x*x );
+    let arr3 = arr1.map(x => x/2);
+    let arr4 = arr1.map(x => x*x)
+                   .map(x => x/2);
+
+    console.log("arr1 = "+arr1);
+    console.log("arr2 = "+arr2);
+    console.log("arr3 = "+arr3);
+    console.log("arr4 = "+arr4);
+  </script>
+ </body>
+</html>
+

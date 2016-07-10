@@ -1,0 +1,47 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>NodeJs Question</title>
+ </head>
+
+ <body>
+   <script>
+     //-------------------------------------------------
+     // 1) The every() method checks if all elements in 
+     //    an array pass a test (provided as a function)
+     // 
+     // 2) The some() method checks if any element in an
+     //    array passes a test (provided as a function)
+     //-------------------------------------------------
+
+     function authenticatedUsers(authUsers) {
+        console.log("authUsers = "+JSON.stringify(authUsers));
+        return function areUsersAuthenticated(newUsers) {
+           console.log("newUsers = "+JSON.stringify(newUsers));
+           return newUsers.every(function(newUser, index) { 
+console.log("*** index of user to authenticate = "+index)
+              return authUsers.some(function(authUser) { 
+
+console.log(index+" "+JSON.stringify(authUser)+" matches? "+
+            JSON.stringify(newUser)+
+            " result--> "+(newUser.id === authUser.id)) 
+                 
+                 return authUser.id === newUser.id
+              }) 
+           }) 
+        } 
+     } 
+
+     var newUsers  = [{name:"one",id:1},{name:"two",id:4}];
+     var authUsers = [{name:"one",id:1},{name:"two",id:2},
+                      {name:"three",id:3},{name:"four",id:4}];
+
+     console.log("result: "+authenticatedUsers(authUsers)(newUsers));
+     var allValid = newUsers.every(function(user) { 
+                       return authUsers.indexOf(user)>=0; 
+                    });
+     console.log("result2: "+allValid);
+   </script>
+ </body>
+</html>
+

@@ -1,0 +1,99 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>ES6 Collections</title>
+ </head>
+
+ <body>
+   <script>
+     // the ES6 Set collection 
+     var set = new Set(["a","a","e","b",
+                        "c","b","b","d"]);
+     console.log("set = "+set);
+     for (value of set) {
+        console.log("set value = "+value);
+     }
+
+     set.clear();
+
+     console.log(set.size); //Logs 0
+
+     set.add("a").add("b").add("c"); 
+     console.log("set has a: "+set.has("a")); //Logs true
+     console.log("set size:  "+set.size);     //Logs 3
+
+     // the ES6 Map collection 
+     var map = new Map();
+     map.set(1, "one");
+     map.set("two", 2);
+     map.set(true, false);
+     map.set("foo", "bar");
+     console.log("1foo = "+map.get("foo")); 
+     map.set({foo: "bar"}, ["foo", "bar"]);
+
+     map.forEach(function (value, key, mapObj) {
+       console.log("value: ",value,"key: ",key,"map ",mapObj === map);
+     });
+
+     console.log("2foo = "+map.get("foo")); 
+
+     // the ES6 iterator  
+     function logIterator(iterator) {
+       var current;
+       while(true) {
+         current = iterator.next();
+         if (current.done) {
+             break;
+         }
+         console.log(current.value);
+       }
+     }
+
+     logIterator(["a","b", "c", "d"].entries());
+     logIterator(["a","b", "c", "d"].keys());
+
+     var map = new Map();
+     map.set(0, "a");
+     map.set(1, "b");
+     map.set(2, "c");
+     map.set(3, "d");
+     logIterator(map.entries());
+     logIterator(map.keys());
+     logIterator(map.values());
+
+     // the ES6 WeakMap 
+     // WeakMap methods: get/set/has/delete/clear
+     var data, wmap = new WeakMap();
+     wmap.set({foo: "bar"}, "foobar");
+
+/*
+     //This is a JavaScript error:
+     for (data of wmap) {
+         console.log(data);
+     }
+*/
+
+     //-------------------------------------
+     // the ES6 WeakSet 
+     // methods: add/has/delete/clear
+     // store only objects (no primitives)
+     // you cannot iterate over a WeakSet
+     // there is no size property
+     //-------------------------------------
+     var button, wset = new WeakSet();
+
+     for (button of document.querySelectorAll("button")) {
+       button.addEventListener("click", function (event) {
+         if (wset.has(event.target)) {
+            alert("You have clicked this button before!");
+         } else {
+            alert("First time clicking this button");
+         }
+         wset.add(event.target);
+       });
+     }
+
+   </script>
+ </body>
+</html>
+

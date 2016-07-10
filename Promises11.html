@@ -1,0 +1,62 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>Working with Promises</title>
+ </head>
+
+ <body>
+   <script>
+     var p = new Promise(function(resolve) {
+         var value = 13;
+         resolve(value);
+     });
+   
+     p.then(function(data) {
+        console.log("Level 1 1data: "+data);
+        var p2 = new Promise(function(resolve) {
+            var value = 23;
+            resolve(value);
+        });
+   
+        return p2;
+     })
+     .then(function(data) {
+        console.log("Level 3 Ndata: "+data);
+        return data;
+     })
+     .then(function(data) {
+        console.log("Level 4 Pdata: "+data);
+        return 2*data;
+     })
+     .then(function(data) {
+        console.log("Level 5 Qdata: "+data);
+     });
+   
+     p.then(function(data) {
+        console.log("Level 1 2data: "+data);
+     });
+   
+     p.then(function(data) {
+        console.log("Level 1 3data: "+data);
+        return (2*data);
+     })
+     .then(function(data) {
+        console.log("Level 2 4data: "+data);
+     });
+   
+     p.then().then().then().then().then(function(data) {
+        console.log("Level 5 5data: "+data);
+     });
+   
+     p.then(function(data) {
+        console.log("Level 1 6data: "+data);
+        return (3*data);
+     });
+   
+     p.then().then().then(function(data) {
+        console.log("Level 3 7data: "+data);
+     });
+   </script>
+ </body>
+</html>
+

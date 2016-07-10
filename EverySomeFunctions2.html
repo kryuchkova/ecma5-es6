@@ -1,0 +1,59 @@
+<html>
+ <head>
+  <meta charset="utf-8">
+  <title>NodeJs Question</title>
+ </head>
+
+ <body>
+   <script>
+     //-------------------------------------------------
+     // 1) The every() method checks if all elements in 
+     //    an array pass a test (provided as a function)
+     // 2) The some() method checks if any element in an
+     //    array passes a test (provided as a function)
+     //-------------------------------------------------
+     function authenticatedUsers(authUsers) {
+        console.log("authUsers = "+JSON.stringify(authUsers));
+        return function areUsersAuthenticated(newUsers) {
+           console.log("newUsers = "+JSON.stringify(newUsers));
+
+           var justUserNames = [];
+           for(index in authUsers) {
+            //console.log("user: "+authUsers[index]["name"]);
+              justUserNames.push(authUsers[index]["name"]);
+           }
+
+           return newUsers.every(function(newUser, index) { 
+console.log("*** index of user to authenticate = "+index)
+              return justUserNames.some(function(authUser) { 
+
+console.log(index+" "+justUserNames[index]+" matches? "+newUser+
+            " result--> "+(justUserNames[index] === newUser)) 
+                 
+                 return justUserNames[index] === newUser
+              }) 
+           }) 
+        } 
+     } 
+
+     var newUsers  = ["one","two"];
+     var authUsers = [{name:"one"},{name:"two"},
+                      {name:"three"},{name:"four"}];
+
+     var justUserNames = [];
+     for(index in authUsers) {
+      //console.log("user: "+authUsers[index]["name"]);
+        justUserNames.push(authUsers[index]["name"]);
+     }
+
+     console.log("keys: "+Object.keys(authUsers));
+
+     console.log("result: "+authenticatedUsers(authUsers)(newUsers));
+     var allValid = newUsers.every(function(user) { 
+                       return justUserNames.indexOf(user)>=0; 
+                    });
+     console.log("result2: "+allValid);
+   </script>
+ </body>
+</html>
+
